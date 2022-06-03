@@ -1,5 +1,5 @@
 import random
-from constants import *
+import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
 
@@ -16,6 +16,11 @@ class Ball(Actor):
     def __init__(self):
         "Constructs a new Ball."
         super().__init__()
+        self._points = 0
+        self.set_text("@")
+        self.set_color(constants.RED)
+        self.set_position(Point(random.randint(0, constants.MAX_X), random.randint(0, constants.MAX_Y)))
+        self.set_velocity(Point(constants.BALL_VELOCITY, constants.BALL_VELOCITY))
     
     def bounce_x(self):
         """Bounces the ball in the x direction."""
@@ -38,7 +43,17 @@ class Ball(Actor):
     def release(self):
         """Release the ball in a random direction."""
         rn = random.uniform(0.9, 1.1)
-        vx = random.choice([-BALL_VELOCITY * rn, BALL_VELOCITY * rn])
-        vy = -BALL_VELOCITY
+        vx = random.choice([-1 * constants.BALL_VELOCITY * rn, constants.BALL_VELOCITY * rn])
+        vy = -constants.BALL_VELOCITY
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
+
+    def ejecutaScript():
+        print ('aca va el codigo numero 1')
+        time.sleep(100)
+
+        while True:
+            ejecutaScript()
+
+        for i in range(10):
+            print("aca seguria un segundo codigo")

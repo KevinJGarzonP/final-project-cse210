@@ -1,5 +1,9 @@
+import constants
+import time
+from random import randint
 from game.scripting.action import Action
-
+from game.shared.point import Point
+from game.casting.balls import Ball
 
 class DrawActorsAction(Action):
     """
@@ -31,10 +35,18 @@ class DrawActorsAction(Action):
         player = cast.get_first_actor("players")
         segments = player.get_segments()
         messages = cast.get_actors("messages")
+        new_balls = cast.get_actors("balls")
 
         self._video_service.clear_buffer()
         self._video_service.draw_actor(ball)
         self._video_service.draw_actors(segments)
+        self._video_service.draw_actors(new_balls)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
         self._video_service.flush_buffer()
+
+    def _activate_ball(self, cast):
+        ball = cast.get_first_actor("balls")
+        ball.release()
+
+    

@@ -1,3 +1,4 @@
+from random import randint
 import constants
 from game.scripting.action import Action
 from game.shared.point import Point
@@ -5,9 +6,9 @@ from game.shared.point import Point
 
 class ControlActorsAction(Action):
     """
-    An input action that controls the snake.
+    An input action that controls the player.
     
-    The responsibility of ControlActorsAction is to get the direction and move the snake's head.
+    The responsibility of ControlActorsAction is to get the direction and move the player.
 
     Attributes:
         _keyboard_service (KeyboardService): An instance of KeyboardService.
@@ -46,4 +47,6 @@ class ControlActorsAction(Action):
             self._direction = Point(0, constants.CELL_SIZE)
         
         player = cast.get_first_actor("players")
-        player.turn_head(self._direction)
+        player.turn_head(self._direction)    
+
+    
