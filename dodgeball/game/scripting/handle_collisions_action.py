@@ -26,24 +26,23 @@ class HandleCollisionsAction(Action):
             script (Script): The script of Actions in the game.
         """
         if not self._is_game_over:
-            self._handle_food_collision(cast)
+            self._handle_ball_collision(cast)
             self._handle_segment_collision(cast)
             self._handle_game_over(cast)
 
-    def _handle_food_collision(self, cast):
+    def _handle_ball_collision(self, cast):
         """Updates the score nd moves the food if the snake collides with the food.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
         score = cast.get_first_actor("scores")
-        bakk = cast.get_first_actor("balls")
+        ball = cast.get_first_actor("balls")
         player = cast.get_first_actor("players")
         head = player.get_head()
 
-        if head.get_position().equals(food.get_position()):
+        if head.get_position().equals(ball.get_position()):
             points = ball.get_points()
-            player.grow_tail(points)
             player.add_points(points)
             ball.reset()
     
