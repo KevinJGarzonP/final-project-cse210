@@ -14,3 +14,10 @@ WHITE = Color(255, 255, 255)
 RED = Color(255, 0, 0)
 YELLOW = Color(255, 255, 0)
 GREEN = Color(0, 255, 0)
+
+# BALL
+BALL_GROUP = "balls"
+BALL_IMAGE = "batter/assets/images/000.png"
+BALL_WIDTH = 28
+BALL_HEIGHT = 28
+BALL_VELOCITY = 6
